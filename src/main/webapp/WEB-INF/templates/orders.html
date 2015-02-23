@@ -1,0 +1,27 @@
+<html>
+<th:block th:include="layout/main :: head" ></th:block>
+
+<th:block th:include="layout/main :: #navbar" ></th:block>
+
+<body data-ng-controller="MainController">
+	
+	<!-- orders grid -->
+	<tony-grid template="'orders/'" />
+
+	<th:block th:include="layout/main :: #scripts" ></th:block>
+	<script th:src="@{/resources/module/common/directive/BaseDirective.js}"></script>
+	<script th:src="@{/resources/module/common/directive/GridDirective.js}"></script>
+	<script th:src="@{/resources/module/common/main.js}"></script>
+	
+	<script>
+		$(document).ready(function() {
+			prepareOrdersPage ();
+		});
+	</script>
+	
+	
+<iframe id="getTokenFrame" src="about:blank" style="position:absolute;top:-1000px">
+</iframe>
+	
+</body>
+</html>

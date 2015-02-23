@@ -1,0 +1,29 @@
+
+<th:block th:include="layout/main :: #scripts" ></th:block>
+<script>
+
+	var accessToken=null;
+	var refreshTime=null;
+	
+	var extractToken = function(hash) {
+    	var match = hash.match(/access_token=([\w-]+)/);
+    	accessToken = match[1];
+    	
+    	match = hash.match(/expires_in=([\w-]+)/);
+    	refreshTime = match[1];
+  	};
+  	
+  	$ (function () {
+  		
+  		extractToken (document.location.hash);
+		console.log ("iframe refresh token:" + accessToken + " refreshTime:" + refreshTime)
+		
+		var parent=window.parent;
+		console.log ("parent:" + parent.angular)
+		
+		var mainScope = parent.angular.element ('body').scope ();
+		mainScope.setAccessToken (accessToken, true, refreshTime);
+  	});
+  	
+  	
+</script>

@@ -1,0 +1,17 @@
+<html>
+<th:block th:include="layout/main :: head" ></th:block>
+
+<th:block th:include="layout/main :: #navbar" ></th:block>
+
+<body>
+	<div sec:authorize=" !authenticated">
+		signin with facebook:<a href="signin/facebook">Sign In with FaceBook</a>
+	</div>
+	<div sec:authorize=" authenticated">
+		You've already signed in. <a href="signout">Sign out</a>
+	</div>
+
+	<th:block th:include="layout/main :: #scripts" ></th:block>
+
+</body>
+</html>

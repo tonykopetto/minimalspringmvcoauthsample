@@ -1,0 +1,29 @@
+<html>
+<th:block th:include="layout/main :: head" ></th:block>
+
+<th:block th:include="layout/main :: #navbar" ></th:block>
+
+<body>
+
+	<div class="jumbotron">
+    	<h1>Welcome to Tony's sample web app</h1>
+        <p>
+        	This web application is an example of using the following modern 
+        	day web technologies:
+        	<ul>
+        		<li>Java</li>
+        		<li>Spring Core</li>
+        		<li>Spring Mvc</li>
+        		<li>Spring Oauth2</li>
+        		<li>Spring Data</li>
+        		<li>Thymeleaf</li>
+        		<li>Angular JS</li>
+        		<li>Mongo DB</li>
+        	</ul>
+        </p>
+	</div>
+      
+	<th:block th:include="layout/main :: #scripts" ></th:block>
+	
+</body>
+</html>

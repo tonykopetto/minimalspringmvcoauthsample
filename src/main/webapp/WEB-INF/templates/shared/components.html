@@ -1,0 +1,45 @@
+<div th:fragment="paginationbar">
+	<ul class="pagination paginatorStyle">
+		<li th:class="${page.firstPage}? 'disabled' : ''">
+			<span th:if="${page.firstPage}">&larr; First</span>
+			<a th:if="${not page.firstPage}" 
+				th:attr="data-ng-click=${'page (0)'}">
+				&larr; First
+			</a>
+		</li>
+		<li th:class="${page.hasPreviousPage}? '' : 'disabled'">
+			<span th:if="${not page.hasPreviousPage}">&laquo;</span>
+			<a th:if="${page.hasPreviousPage}"
+			
+			th:attr="data-ng-click=${'page (' + (page.number - 1) + ')'}" 
+			title="page to previous page">
+				&laquo;
+			</a>
+		</li>
+		<li th:each="item : ${page.items}" th:class="${item.current}? 'active' : ''">
+			<span th:if="${item.current}" th:text="${item.number}">1</span>
+			<a 
+				th:if="${not item.current}"
+				th:attr="data-ng-click=${'page (' + (item.number) + ')'}" 
+				>
+				<span th:text="${item.number}">1</span>
+			</a>
+		</li>
+		<li th:class="${page.hasNextPage}? '' : 'disabled'">
+			<span th:if="${not page.hasNextPage}">&raquo;</span>
+			<a th:if="${page.hasNextPage}"
+				th:attr="data-ng-click=${'page (' + (page.number + 1) + ')'}" 
+				title="page to next page">
+				&raquo;
+			</a>
+		</li>
+		<li th:class="${page.lastPage}? 'disabled' : ''">
+			<span th:if="${page.lastPage}">Last &rarr;</span>
+			<a th:if="${not page.lastPage}"
+				th:attr="data-ng-click=${'page (' + (page.totalPages) + ')'}"> 
+				Last &rarr;
+			</a>
+		</li>
+	</ul>
+
+</div>

@@ -1,0 +1,2 @@
+selenium_url=http://localhost:4444/wd/hub
+app_url=http://localhost:8080/sample

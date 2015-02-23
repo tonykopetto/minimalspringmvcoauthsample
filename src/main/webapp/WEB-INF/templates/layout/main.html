@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Welcome to Tony Kopetto Sample Web App</title>
+
+<meta name="keywords" th:content="'keywords'" />
+<meta name="description" th:content="'Tony Kopetto Sample Web App'"/>
+<meta name="author" content="Tony Kopetto" />
+<meta class="viewport" name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"></link>
+</head>
+
+<body>
+
+	<div id="navbar" class="container">
+
+		<!-- Static navbar -->
+		<div class="navbar navbar-default" role="navigation">
+        	<div class="container-fluid">
+          		<div class="navbar-header">
+            		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+	              		<span class="sr-only">Toggle navigation</span>
+	              		<span class="icon-bar"></span>
+	              		<span class="icon-bar"></span>
+	              		<span class="icon-bar"></span>
+            		</button>
+            		<a class="navbar-brand" href="#">Tony's Web App</a>
+          		</div>
+          		<div class="navbar-collapse collapse">
+            		<ul class="nav navbar-nav">
+              			<li th:class="${pageId == 'home' ? 'active' : ''}"><a href="/sample">Home</a></li>
+              			<li th:class="${pageId == 'account' ? 'active' : ''}"><a href="account">Account</a></li>
+              			<li th:class="${pageId == 'search' ? 'active' : ''}"><a href="search">Search</a></li>
+
+              			<li
+              				sec:authorize="! authenticated" 
+              				th:class="${pageId == 'signin' ? 'active' : ''}"><a href="signin">Sign In</a></li>
+              			
+						<li  class="dropdown" sec:authorize=" authenticated">
+							<a class="dropdown-toggle" data-toggle="dropdown" href="#"> 
+								<i class="icon-user"></i> 
+								<span th:text="${loggedinUser.username}">User Name</span> 
+								<b class="caret"></b>
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="#" th:href="@{orders}">
+										<i class="icon-wrench"></i> 
+										My Orders 
+									</a>
+								</li>
+
+								<li class="divider"></li>
+								<li>
+									<a href="#" th:href="@{/signout}">
+										<i class="icon-signout"></i> 
+										Sign out
+									</a>
+								</li>
+							</ul>
+						</li>
+              			
+            		</ul>
+          		</div><!--/.nav-collapse -->
+        	</div><!--/.container-fluid -->
+		</div>
+
+	</div> <!-- /container -->
+    
+    <th:block id="scripts">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-cookies.js"></script>
+    </th:block>
+</body>
+</html>
